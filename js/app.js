@@ -44,10 +44,6 @@ seattle.getCookiePerHour();
 seattle.getResults();
 
 
-// Store the results for each location in a separate array… perhaps as a property of the object representing that location
-
-
-
 
 const tokyo = {
   location: 'tokyo',
@@ -201,4 +197,4 @@ function renderPlace(place) {
 
 for (let i = 0; i < locationArray.length; i++){
   renderPlace(locationArray[i]);
-};
+}
