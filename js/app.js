@@ -63,7 +63,7 @@ function makeElement(tagName, parent, textContent){
 // articleElem.appendChild(h2Elem);
 
 
-// added a function that renders the restaurant profiles to the DOM using restaurant instance ex: (Seattle) as the argument.
+// added a function that renders the restaurant profiles to the DOM using restaurant instance ex: (Seattle) as an argument.
 function renderRestProfile(restaurant) {
   const articleElem = makeElement('article', restProfileDivElem, null);
   const h2Elem = makeElement('h2', articleElem, restaurant.location);
@@ -75,24 +75,31 @@ function renderRestProfile(restaurant) {
   }
 }
 
+// created an array for the restaurant locations. We will use this in the functions below.
 const locationArray = [Seattle, Tokyo, Dubai, Paris, Lima];
 
+// added a function that renders a table to the DOM.
 function renderTable(){
+  // created the <article>, <table>, <thead>, and <tr> elements.
   const articleElem = makeElement('article', restProfileDivElem, null);
   const tableElem = makeElement('table', articleElem, null);
   const theadElem = makeElement('thead', tableElem, null);
   const rowElem = makeElement('tr', theadElem, null);
 
+  // created the <th> within the <tr> element and looped it through the restaurant hoursArray to create a new <th> for each hourly time, ending with a Daily location total. Started with textContent of null so title is pushed over one and not above restaurant name.
   makeElement('th', rowElem, null);
   for (let i=0; i<hoursArray.length; i++){
     makeElement('th', rowElem, hoursArray[i]);
   }
   makeElement('th', rowElem, 'Daily Location Total');
 
+  // created the <body> element. Used  the renderRow function (see below) to create rows with <th> restaurant name and <td> with cookiesPerHour.
   const tbodyElem = makeElement('tbody', tableElem, null);
   for (let i=0; i<locationArray.length; i++){
     locationArray[i].renderRow(tbodyElem);
   }
+
+  // created the footer with a row of hourly totals. We loop through the restaurant location names first within a loop going through each hour. You have to loop through every locationArray at hoursArray[0] making an element for each loop, before moving to hoursArray [1].
   const tfootElem = makeElement('tfoot', tableElem, null);
   const tfRowElem = makeElement('tr', tfootElem, null);
   makeElement('th', tfRowElem, 'Hourly Total');
@@ -106,9 +113,12 @@ function renderTable(){
 
 }
 
+//  created the renderRow method. This method takes in the element tbodyElem as an argument and creates a row with the cookiesPerHour.I used a prototype because this is a behavior I want to do to each individual instance of Restaurants. Seattle
 Restaurants.prototype.renderRow = function(tbodyElem){
   const rowElem = makeElement('tr', tbodyElem, null);
   makeElement('th', rowElem, this.location);
+
+  // created a loop that goes through the cookies sold per hour (cookiesPerHour) and creates a <td> for each result. Also this.cookiesPerHour adds to dailyTotal with each loop and a <td> is made outside of the loop for this running total. 
   let dailyTotal = 0;
   for (let i=0; i < this.cookiesPerHour.length; i++){
     makeElement('td', rowElem, this.cookiesPerHour[i]);
@@ -117,12 +127,12 @@ Restaurants.prototype.renderRow = function(tbodyElem){
   makeElement('td', rowElem, dailyTotal);
 };
 
+// go through each restaurant location in the array locationArray. With each loop, this code calls the getCookiesSoldString method and runs it at each index and also calls the renderRestProfile using each locationArray index as an argument. (index 0 would be Seattle) 
 for (let i = 0; i < locationArray.length; i++){
   locationArray[i].getCookiesSoldString();
   renderRestProfile(locationArray[i]);
-
 }
-
+// call the renderTable function.
 renderTable();
 
 
@@ -147,7 +157,7 @@ renderTable();
   </tbody>
   <tfoot>
     <tr>
-    <th>Totals</th>
+      <th>Totals</th>
     </tr>
   </tfoot>
 </table>
