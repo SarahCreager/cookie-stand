@@ -1,6 +1,7 @@
 'use strict';
 
 console.log('hello world');
+// PART I gathering and storing information
 
 // created an array for the hours the Restaurants are open.
 const hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
@@ -13,7 +14,7 @@ function Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust){
   this.avgCookiePerCust = avgCookiePerCust;
   this.customersPerHour = [];
   this.cookiesPerHour = [];
-  this.cookiesSold = [];
+  this.cookiesSoldString = [];
 }
 
 //random customer number generator (used in the function below)
@@ -22,12 +23,12 @@ function randomCust(a, b) {
   return customersPerHour;
 }
 
-// combined all 3 methods(functions) from previous lab into one called 'getCookiesSold'. Made it a prototype of Restaurants. This method finds a random number of customers per hour and uses that to find the number of cookies sold per hour. Then it places both together in a string called 'cookiesSold'. I used a prototype because this is a behavior I want to do to each individual instance of Restaurants.
-Restaurants.prototype.getCookiesSold = function(){
+// combined all 3 methods(functions) from previous lab into one called 'getCookiesSoldString'. Made it a prototype of Restaurants. This method finds a random number of customers per hour and uses that to find the number of cookies sold per hour. Then it places both together in a string called 'cookiesSoldString'. I used a prototype because this is a behavior I want to do to each individual instance of Restaurants.
+Restaurants.prototype.getCookiesSoldString = function(){
   for (let i=0; i<hoursArray.length; i++){
     this.customersPerHour[i] = randomCust(this.minHourlyCust, this.maxHourlyCust);
     this.cookiesPerHour[i] = Math.floor(this.customersPerHour[i] * this.avgCookiePerCust);
-    this.cookiesSold[i] = `${hoursArray[i]}: ${this.cookiesPerHour[i]} cookies`;
+    this.cookiesSoldString[i] = `${hoursArray[i]}: ${this.cookiesPerHour[i]} cookies`;
     // this.totalCookiesSold += this.cookiesPerHour[i];
   }
 };
@@ -40,9 +41,13 @@ const Paris = new Restaurants('Paris', 20, 38, 2.3);
 const Lima = new Restaurants('Lima', 2, 16, 4.6);
 
 
+// PART II adding the above information to the DOM
+
+// created a shortcut variable 'restProfileDivElem' to use in our subsequent functions called 'renderRestProfile' and 'renderTable'. This variable will let us access the <div> element with an ID of "restaurantProfiles". We will add our information above here.
+const restProfileDivElem = document.getElementById('restaurantProfiles');
 
 
-// adding to the DOM
+// added a function that creates and appends elements to the DOM by taking in the tagName, parent, and textContent arguments. Has a conditional statement if the element has textContent.
 function makeElement(tagName, parent, textContent){
   let element = document.createElement(tagName);
   if (textContent) {
@@ -52,26 +57,28 @@ function makeElement(tagName, parent, textContent){
   return element;
 }
 
-function renderPlace(place) {
-  let articleElem = document.createElement('article');
-  profileDivElem.appendChild(articleElem);
-  let h2Elem = document.createElement('h2');
-  h2Elem.textContent = place.location;
-  articleElem.appendChild(h2Elem);
-  let ulElem = document.createElement('ul');
-  articleElem.appendChild(ulElem);
-  for (let i = 0; i < place.cookiesSold.length; i ++){
-    let liElem = document.createElement('li');
-    liElem.textContent = place.cookiesSold[i];
-    ulElem.appendChild(liElem);
+// old way of rendering rest profiles without a function:
+// let h2Elem = document.createElement('h2');
+// h2Elem.textContent = restaurant.location;
+// articleElem.appendChild(h2Elem);
+
+
+// added a function that renders the restaurant profiles to the DOM using restaurant instance ex: (Seattle) as the argument.
+function renderRestProfile(restaurant) {
+  const articleElem = makeElement('article', restProfileDivElem, null);
+  const h2Elem = makeElement('h2', articleElem, restaurant.location);
+  const ulElem = makeElement('ul', articleElem, null);
+
+  //here we have to loop through the cookiesSoldString array to add each item to our list. (index 0 of cookiesSoldString has a value of 6am: 409 cookies)
+  for (let i = 0; i < restaurant.cookiesSoldString.length; i ++){
+    let liElem = makeElement('li', ulElem, restaurant.cookiesSoldString[i]);
   }
 }
 
 const locationArray = [Seattle, Tokyo, Dubai, Paris, Lima];
-const profileDivElem = document.getElementById('cookies');
 
 function renderTable(){
-  const articleElem = makeElement('article', profileDivElem, null);
+  const articleElem = makeElement('article', restProfileDivElem, null);
   const tableElem = makeElement('table', articleElem, null);
   const theadElem = makeElement('thead', tableElem, null);
   const rowElem = makeElement('tr', theadElem, null);
@@ -111,8 +118,8 @@ Restaurants.prototype.renderRow = function(tbodyElem){
 };
 
 for (let i = 0; i < locationArray.length; i++){
-  locationArray[i].getCookiesSold();
-  renderPlace(locationArray[i]);
+  locationArray[i].getCookiesSoldString();
+  renderRestProfile(locationArray[i]);
 
 }
 
@@ -145,66 +152,3 @@ renderTable();
   </tfoot>
 </table>
 <article> */
-
-//Example of previous way I constructed object. 
-// const seattle = {
-//   location: 'seattle',
-//   minHourlyCust: 23,
-//   maxHourlyCust: 65,
-//   averageCookiePerCust: 6.3,
-//   customerPerHour: [],
-//   cookiePerHour: [],
-//   results: [],
-//   getCustPerHour: function () {
-//     for (let index=0; index<hoursArray.length; index++){
-//       this.customerPerHour[index] = randomCust(this.minHourlyCust, this.maxHourlyCust);
-//     } return this.customerPerHour;
-//   },
-//   getCookiePerHour: function () {
-//     for (let index=0; index<hoursArray.length; index++){
-//       this.cookiePerHour[index] = Math.floor(this.getCustPerHour()[index] * this.averageCookiePerCust);
-//     } return this.cookiePerHour;
-//   },
-//   getResults: function () {
-//     for (let index=0; index<hoursArray.length; index++){
-//       this.results[index] = hoursArray[index] + ': ' + this.cookie[index] + ' cookies';
-//     } return this.results;
-//   },
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-//Example of previous way I constructed object. 
-// const seattle = {
-//   location: 'seattle',
-//   minHourlyCust: 23,
-//   maxHourlyCust: 65,
-//   averageCookiePerCust: 6.3,
-//   customerPerHour: [],
-//   cookiePerHour: [],
-//   results: [],
-//   getCustPerHour: function () {
-//     for (let index=0; index<hoursArray.length; index++){
-//       this.customerPerHour[index] = randomCust(this.minHourlyCust, this.maxHourlyCust);
-//     } return this.customerPerHour;
-//   },
-//   getCookiePerHour: function () {
-//     for (let index=0; index<hoursArray.length; index++){
-//       this.cookiePerHour[index] = Math.floor(this.getCustPerHour()[index] * this.averageCookiePerCust);
-//     } return this.cookiePerHour;
-//   },
-//   getResults: function () {
-//     for (let index=0; index<hoursArray.length; index++){
-//       this.results[index] = hoursArray[index] + ': ' + this.cookie[index] + ' cookies';
-//     } return this.results;
-//   },
-// };
