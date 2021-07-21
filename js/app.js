@@ -2,39 +2,47 @@
 
 console.log('hello world');
 
+// created an array for the hours the Restaurants are open.
+const hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-function randomCust(a, b) {
-  let customerPerHour = Math.floor(Math.random() * (b - a + 1) + a);
-  return customerPerHour;
-}
-
-function Store(location, minHourlyCust, maxHourlyCust, averageCookiePerCust){
+// used constructor function 'Restaurants' to easily create an object for each location.
+function Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust){
   this.location = location;
   this.minHourlyCust = minHourlyCust;
   this.maxHourlyCust = maxHourlyCust;
-  this.averageCookiePerCust = averageCookiePerCust;
-  this.customerPerHour = [];
-  this.cookiePerHour = [];
-  this.results = [];
+  this.avgCookiePerCust = avgCookiePerCust;
+  this.customersPerHour = [];
+  this.cookiesPerHour = [];
+  this.cookiesSold = [];
 }
 
-const hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+//random customer number generator (used in the function below)
+function randomCust(a, b) {
+  let customersPerHour = Math.floor(Math.random() * (b - a + 1) + a);
+  return customersPerHour;
+}
 
-const Seattle = new Store('Seattle', 23, 65, 6.3);
-const Tokyo = new Store('Tokyo', 3, 24, 1.2);
-const Dubai = new Store('Dubai', 11, 38, 3.7);
-const Paris = new Store('Paris', 20, 38, 2.3);
-const Lima = new Store('Lima', 2, 16, 4.6);
-
-Store.prototype.getCookiesSold = function(){
+// combined all 3 methods(functions) from previous lab into one called 'getCookiesSold'. Made it a prototype of Restaurants. This method finds a random number of customers per hour and uses that to find the number of cookies sold per hour. Then it places both together in a string called 'cookiesSold'. I used a prototype because this is a behavior I want to do to each individual instance of Restaurants.
+Restaurants.prototype.getCookiesSold = function(){
   for (let i=0; i<hoursArray.length; i++){
-    this.customerPerHour[i] = randomCust(this.minHourlyCust, this.maxHourlyCust);
-    this.cookiePerHour[i] = Math.floor(this.customerPerHour[i] * this.averageCookiePerCust);
-    this.results[i] = hoursArray[i] + ': ' + this.cookiePerHour[i] + ' cookies';
-    this.totalCookiesSold += this.cookiePerHour[i];
+    this.customersPerHour[i] = randomCust(this.minHourlyCust, this.maxHourlyCust);
+    this.cookiesPerHour[i] = Math.floor(this.customersPerHour[i] * this.avgCookiePerCust);
+    this.cookiesSold[i] = `${hoursArray[i]}: ${this.cookiesPerHour[i]} cookies`;
+    // this.totalCookiesSold += this.cookiesPerHour[i];
   }
 };
 
+// created a new instance (object) for each restaurant from the constructor function 'Restaurants'.
+const Seattle = new Restaurants('Seattle', 23, 65, 6.3);
+const Tokyo = new Restaurants('Tokyo', 3, 24, 1.2);
+const Dubai = new Restaurants('Dubai', 11, 38, 3.7);
+const Paris = new Restaurants('Paris', 20, 38, 2.3);
+const Lima = new Restaurants('Lima', 2, 16, 4.6);
+
+
+
+
+// adding to the DOM
 function makeElement(tagName, parent, textContent){
   let element = document.createElement(tagName);
   if (textContent) {
@@ -52,9 +60,9 @@ function renderPlace(place) {
   articleElem.appendChild(h2Elem);
   let ulElem = document.createElement('ul');
   articleElem.appendChild(ulElem);
-  for (let i = 0; i < place.results.length; i ++){
+  for (let i = 0; i < place.cookiesSold.length; i ++){
     let liElem = document.createElement('li');
-    liElem.textContent = place.results[i];
+    liElem.textContent = place.cookiesSold[i];
     ulElem.appendChild(liElem);
   }
 }
@@ -84,20 +92,20 @@ function renderTable(){
   for(let i=0; i <hoursArray.length; i++){
     let hourlyTotal = 0;
     for(let index=0; index<locationArray.length; index++){
-      hourlyTotal += locationArray[index].cookiePerHour[i];
+      hourlyTotal += locationArray[index].cookiesPerHour[i];
     }
     makeElement('th', tfRowElem, hourlyTotal);
   }
 
 }
 
-Store.prototype.renderRow = function(tbodyElem){
+Restaurants.prototype.renderRow = function(tbodyElem){
   const rowElem = makeElement('tr', tbodyElem, null);
   makeElement('th', rowElem, this.location);
   let dailyTotal = 0;
-  for (let i=0; i < this.cookiePerHour.length; i++){
-    makeElement('td', rowElem, this.cookiePerHour[i]);
-    dailyTotal += this.cookiePerHour[i];
+  for (let i=0; i < this.cookiesPerHour.length; i++){
+    makeElement('td', rowElem, this.cookiesPerHour[i]);
+    dailyTotal += this.cookiesPerHour[i];
   }
   makeElement('td', rowElem, dailyTotal);
 };
