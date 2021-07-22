@@ -8,7 +8,29 @@
   <body>
       <header>Cookie Sales Graph</header>
       <main>
-        <table id="restaurantProfiles">
+        <section>
+          <h2>Add a Restaurant!</h2>
+          <form id="addRestForm">
+            <fieldset>
+              <legend>Restaurant Info</legend>
+              <label>Location
+                  <input name="city" type="text"/>
+              </label>
+              <label>Min Hourly Customers
+                <input name="minCust" type="number"/>
+            </label>
+            <label>Max Hourly Customers
+              <input name="maxCust" type="number"/>
+            </label>
+            <label>Average Cookie Per Customer
+              <input name="aveCookie" type="number" step=".1"/>
+            </label>
+            </fieldset>
+            <button type="submit">Submit</button>
+          </form>
+        </section>
+        <section>
+         <table id="restaurantProfiles">
           <!-- 
           <thead>
             <tr>
@@ -43,10 +65,12 @@
               <td> hourlyTotal</td>
             </tr>
           </tfoot>-->
-        </table>
+          </table>
+      </section>
     </main>
     <footer>
       <script src="./js/app.js"></script>
     </footer>
   </body>
 </html>
+
