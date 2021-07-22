@@ -22,8 +22,6 @@ function Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust){
   this.minHourlyCust = minHourlyCust;
   this.maxHourlyCust = maxHourlyCust;
   this.avgCookiePerCust = avgCookiePerCust;
-  // this.customersPerHour = [];
-  // this.cookiesPerHour = [];
   this.salesPerHour = [];
   // this is our rest location array. STILL DON'T QUITE UNDERSTAND THE CODE.
   Restaurants.allRestaurants.push(this);
@@ -42,6 +40,7 @@ Restaurants.prototype.genRandomCust = function(){
 
 // calculate sales per hour based on random customer.
 Restaurants.prototype.calcSalesPerHour = function(){
+  this.salesPerHour = []; // this resets the array value to 0 so that we don't double up on hourly totals.
   for (let i=0; i<hoursArray.length; i++){
     const thisHoursSale = Math.ceil(this.genRandomCust() * this.avgCookiePerCust);
     this.salesPerHour.push(thisHoursSale);
@@ -130,11 +129,21 @@ function handleSubmit (e){
   let newRest = new Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust);
   newRest.genRandomCust();
   newRest.calcSalesPerHour();
-  newRest.renderRestaurant(makeElement('tbody', restTableElem, null));
+  // newRest.renderRestaurant(makeElement('tbody', restTableElem, null));
+
+  //clear out table and re-render.
+  restTableElem.innerHTML = '';
+
+  renderHeader();
+  renderAllRest();
+  renderFooter();
 
   //this clears the form out after submit
   e.target.reset();
+
+
 }
+
 
 
 //-------------------------------------Add Event Listeners-------------------------//
