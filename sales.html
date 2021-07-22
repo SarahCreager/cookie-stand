@@ -17,13 +17,13 @@
                   <input name="city" type="text"/>
               </label>
               <label>Min Hourly Customers
-                <input name="minCust" type="number"/>
+                <input name="minCust" type="number" min="0" step="1"/>
             </label>
             <label>Max Hourly Customers
-              <input name="maxCust" type="number"/>
+              <input name="maxCust" type="number" min="0" step="1"/>
             </label>
             <label>Average Cookie Per Customer
-              <input name="aveCookie" type="number" step=".1"/>
+              <input name="aveCookie" type="number" min="0" step=".1"/>
             </label>
             </fieldset>
             <button type="submit">Submit</button>
