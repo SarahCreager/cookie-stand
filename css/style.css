@@ -1,3 +1,40 @@
+/* ------------------------index.html-----------------------*/
+body *{
+  background: #2E2D2D;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  background-color: #BAB6B6;
+  padding-top: 1%;
+  display: flex;
+  border: 6px solid #D69B5D;
+}
+
+header img, header h1, header ul,header ul li{
+  background-color: #BAB6B6;
+  color:#573F26;
+}
+
+header img {
+  background-color: #BAB6B6;
+  width: 30%;
+  height: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------sales.html-----------------------*/
 table *{
   border: thin solid black;
 }
