@@ -10,6 +10,9 @@ const hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '
 // created a reference to where I am on the page.
 const restTableElem = document.getElementById('restaurantProfiles');
 
+// created a reference for where we need to listen to the event
+const formElem = document.getElementById('addRestForm');
+
 
 //--------------------------Constructor Function---------------------------//
 
@@ -22,7 +25,7 @@ function Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust){
   // this.customersPerHour = [];
   // this.cookiesPerHour = [];
   this.salesPerHour = [];
-  // this is our rest location array
+  // this is our rest location array. STILL DON'T QUITE UNDERSTAND THE CODE.
   Restaurants.allRestaurants.push(this);
 }
 
@@ -45,25 +48,20 @@ Restaurants.prototype.calcSalesPerHour = function(){
   }
 }
 
-//prototype to render restaurants to DOM
+//prototype to render restaurants to DOM. CAN CONSOLIDATE THIS LATER
 Restaurants.prototype.renderRestaurant = function(tbodyElem){
-  let grandTotal = 0;
-  const rowElem = document.createElement('tr');
-  tbodyElem.appendChild(rowElem);
-  const locationTHElem = document.createElement('th');
-  locationTHElem.textContent = this.location;
-  rowElem.appendChild(locationTHElem);
+  let dailyTotal = 0;
+  const rowElem = makeElement('tr', tbodyElem, null);
+  const locationTHElem = makeElement('th', rowElem, this.location);
   for (let i=0; i< this.salesPerHour.length; i++){
     const hourlyTotal = this.salesPerHour[i];
     const tdElem = document.createElement('td');
     tdElem.textContent = hourlyTotal;
-    grandTotal += hourlyTotal;
+    dailyTotal += hourlyTotal;
     rowElem.appendChild(tdElem);
 
   }
-  const grandTotalThElem = document.createElement('td');
-  grandTotalThElem.textContent = grandTotal;
-  rowElem.appendChild(grandTotalThElem);
+  const dailyTotalThElem = makeElement('td', rowElem, dailyTotal);
 }
 
 //----------------------------------Global Functions--------------------------//
@@ -99,7 +97,6 @@ function renderAllRest(){
   }
 }
 
-//SWITCH DAILYTOTAL AND GRANDTOTAL VARIABLES
 // render footer of table
 function renderFooter(){
   const tfootElem = makeElement('tfoot', restTableElem, null);
@@ -117,8 +114,33 @@ function renderFooter(){
   } makeElement('th', tfRowElem , grandTotal);
 } 
 
+// function will use the snapshot or state of the event as a parameter e and create a new Restaurant with the specifications from the form and render it to the table. 
+function handleSubmit (e){
+  // only use this on forms to cancel out data going into URL
+  e.preventDefault();
+  console.log(e);
+  let location = e.target.city.value;
+  let minHourlyCust = e.target.minCust.value;
+  parseInt(minHourlyCust);
+  let maxHourlyCust = e.target.maxCust.value;
+  parseInt(maxHourlyCust);
+  let avgCookiePerCust = e.target.aveCookie.value;
+  parseInt(avgCookiePerCust);
+
+  let newRest = new Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust);
+  newRest.genRandomCust();
+  newRest.calcSalesPerHour();
+  newRest.renderRestaurant(makeElement('tbody', restTableElem, null));
+
+  //this clears the form out after submit
+  e.target.reset();
+}
+
+
 //-------------------------------------Add Event Listeners-------------------------//
 
+// Upon submission of the HTML form, create an event handler that creates a new instance of a cookie stand that appends to the table upon form submission.
+formElem.addEventListener('submit', handleSubmit);
 
 //-------------------------------------Call Functions-------------------------//
 
