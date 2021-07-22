@@ -47,6 +47,7 @@ header nav a{
   align-items: center;
 }
 
+/* this is wihtin sectOne */
 #fishpic {
   width: 960px;
   height: 450px;
@@ -56,9 +57,10 @@ header nav a{
 
 #sectTwo {
   display: flex;
+  flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #articleOne {
@@ -123,6 +125,7 @@ h1 {
 /* ------------------------sales.html-----------------------*/
 table *{
   border: thin solid black;
+  background-color: blanchedalmond;
 }
 
 table {

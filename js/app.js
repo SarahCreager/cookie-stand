@@ -68,7 +68,7 @@ Restaurants.prototype.renderRestaurant = function(tbodyElem){
 
 //----------------------------------Global Functions--------------------------//
 
-//makes elements and adds them to the DOM. Used in functions below.
+//makes elements and adds them to the DOM. Used in functions below. Sometimes has an underscore. Helper function _makeElement. Helps make other functions easier. 
 function makeElement(tagName, parent, textContent){
   let element = document.createElement(tagName);
   if (textContent) {
@@ -99,19 +99,26 @@ function renderAllRest(){
   }
 }
 
+//SWITCH DAILYTOTAL AND GRANDTOTAL VARIABLES
 // render footer of table
 function renderFooter(){
   const tfootElem = makeElement('tfoot', restTableElem, null);
   const tfRowElem = makeElement('tr', tfootElem, null);
   makeElement('th', tfRowElem, 'Hourly Total');
+  let grandTotal = 0;
   for(let i=0; i <hoursArray.length; i++){
     let hourlyTotal = 0;
     for(let index=0; index<Restaurants.allRestaurants.length; index++){
+      //Restaurants.allRestaurants[index].salesPerHour[i]; is going when my column is at 6 am I'm looking at my restaurant row Seattle and grabbing that value. 
       hourlyTotal += Restaurants.allRestaurants[index].salesPerHour[i];
     }
     makeElement('th', tfRowElem, hourlyTotal);
-  }
-}
+    grandTotal += hourlyTotal;
+  } makeElement('th', tfRowElem , grandTotal);
+} 
+
+//-------------------------------------Add Event Listeners-------------------------//
+
 
 //-------------------------------------Call Functions-------------------------//
 
