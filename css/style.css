@@ -14,7 +14,7 @@ header {
   align-items: center;
 }
 
-header img, header ul,header ul li{
+header img, header nav,header nav a{
   background-color: #BAB6B6;
   color:#573F26;
 }
@@ -26,14 +26,14 @@ header img {
   padding: 1%;
 }
 
-header ul{
+header nav{
   width: 80%;
   display: flex-start;
   justify-content: center;
   padding-right: 2%;
   padding-left: 6%;
 }
-header ul li{
+header nav a{
   display: inline;
   color: #3b3939af;
   letter-spacing: 2px;
@@ -50,14 +50,68 @@ header ul li{
 #fishpic {
   width: 960px;
   height: 450px;
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 10px;
+}
 
+#sectTwo {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#articleOne {
+  padding-left: 20%;
+}
+#articleTwo {
+  padding-right: 10%;
+}
+
+#articleThree {
+  padding-right: 25%;
 }
 
 
+#sectTwo li {
+  font-size: 150%;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  color: #B6B3B5;
+  
+}
 
 
+#articleOne li{
+  padding-left: 10%;
+}
+
+#family {
+  width: 90%;
+  padding-top: 40px;
+  padding-left: 3%;
+}
+
+
+#fishcutter{
+  width: 122%;
+  padding-top: 58px;
+  padding-left: 3%;
+}
+
+h1 {
+  font-size: 250%;
+  padding-bottom: 8%;
+  padding-top: 10%;
+  color:#F6F2F4;
+  text-align: center;
+}
+
+#articleTwo li{
+  display: inline-block;
+  text-align: center;
+  
+}
 
 
 
