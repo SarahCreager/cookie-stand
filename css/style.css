@@ -272,3 +272,17 @@ footer {
   justify-content: flex-start;
   align-items: center;
 }
+
+#backtohome{
+  font-family: 'Bebas Neue', cursive;
+  display: inline;
+  color: #3b3939af;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 220%;
+  padding-right: 9.5%;
+}
+
+footer a:hover {
+  color: #D69B5D;
+ }
