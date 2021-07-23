@@ -47,11 +47,11 @@ Restaurants.prototype.calcSalesPerHour = function(){
   }
 }
 
-//prototype to render restaurants to DOM. CAN CONSOLIDATE THIS LATER
+//prototype to render restaurants to DOM. 
 Restaurants.prototype.renderRestaurant = function(tbodyElem){
   let dailyTotal = 0;
   const rowElem = makeElement('tr', tbodyElem, null);
-  const locationTHElem = makeElement('th', rowElem, this.location);
+  makeElement('th', rowElem, this.location);
   for (let i=0; i< this.salesPerHour.length; i++){
     const hourlyTotal = this.salesPerHour[i];
     const tdElem = document.createElement('td');
@@ -60,7 +60,7 @@ Restaurants.prototype.renderRestaurant = function(tbodyElem){
     rowElem.appendChild(tdElem);
 
   }
-  const dailyTotalThElem = makeElement('td', rowElem, dailyTotal);
+  makeElement('td', rowElem, dailyTotal);
 }
 
 //----------------------------------Global Functions--------------------------//
@@ -79,7 +79,7 @@ function makeElement(tagName, parent, textContent){
 function renderHeader(){
   const headerElem = makeElement('thead', restTableElem, null);
   const rowElem = makeElement('tr', headerElem, null);
-  makeElement('td', rowElem, null)
+  makeElement('td', rowElem, null);
   for (let i=0; i<hoursArray.length; i++){
     makeElement('th', rowElem, hoursArray[i]);
   }
@@ -110,8 +110,9 @@ function renderFooter(){
     }
     makeElement('th', tfRowElem, hourlyTotal);
     grandTotal += hourlyTotal;
-  } makeElement('th', tfRowElem , grandTotal);
-} 
+  }
+  makeElement('th', tfRowElem , grandTotal);
+}
 
 // function will use the snapshot or state of the event as a parameter e and create a new Restaurant with the specifications from the form and render it to the table. 
 function handleSubmit (e){
@@ -129,7 +130,7 @@ function handleSubmit (e){
   let newRest = new Restaurants(location, minHourlyCust, maxHourlyCust, avgCookiePerCust);
   newRest.genRandomCust();
   newRest.calcSalesPerHour();
-  // newRest.renderRestaurant(makeElement('tbody', restTableElem, null));
+
 
   //clear out table and re-render.
   restTableElem.innerHTML = '';
@@ -140,8 +141,6 @@ function handleSubmit (e){
 
   //this clears the form out after submit
   e.target.reset();
-
-
 }
 
 
@@ -162,5 +161,4 @@ const Lima = new Restaurants('Lima', 2, 16, 4.6);
 renderHeader();
 renderAllRest();
 renderFooter();
-
 
