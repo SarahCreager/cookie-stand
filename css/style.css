@@ -46,6 +46,10 @@ header nav a{
   padding-right: 9.5%;
 }
 
+nav a:hover {
+  color: #D69B5D;
+ }
+
 main li {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 150%;
@@ -134,10 +138,20 @@ article h1 {
 
 #sectThree {
   background-color: #BAB6B6 ;
-  padding: 4%;
+  padding: 2%;
+}
+
+#sectThree h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 700%;
+  padding-top: 2%;
+  letter-spacing: 2px;
+  color:#F6F2F4;
+  text-align: center;
+  
 }
 #sectFour {
-  background-color: #BAB6B6 ;
+  background-color: #2E2D2D ;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -152,6 +166,72 @@ article h1 {
   padding: 2%;
  
 }
+
+#sectFour h2{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 300%;
+  padding-top: 2%;
+  letter-spacing: 2px;
+  color:#F6F2F4;
+  text-align: center;
+}
+#sectFour h3{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  color: #B6B3B5;
+}
+
+#sectFour article {
+  width: 33%;
+  padding: 2%;
+}
+
+#fishshirt{
+  height: 300px;
+  width: 380px;
+  margin: auto;
+  display: block;
+  padding: 10%;
+}
+ #fishcookies, #frostedcookie {
+  height: 300px;
+  width: 380px;
+  margin: auto;
+  display: block;
+  padding: 10%;
+  
+}
+
+
+
+#sectFour article h2,#sectFour article h3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 4%;
+}
+
+footer nav{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+footer nav a{
+  font-family: 'Bebas Neue', cursive;
+  display: inline;
+  color: #3b3939af;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 220%;
+  padding-right: 9.5%;
+}
+
+footer a:hover {
+  color: #D69B5D;
+ }
 
 
 
@@ -182,4 +262,13 @@ table *{
 
 table {
   border-collapse: collapse;
+}
+
+footer {
+  background-color: #BAB6B6;
+  padding: 6%;
+  display: flex;
+  border: 6px solid #D69B5D;
+  justify-content: flex-start;
+  align-items: center;
 }
