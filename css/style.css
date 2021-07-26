@@ -192,7 +192,7 @@ article li {
 }
 
 
-#sectionOne {
+#sectionOne, #sectionTwo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -208,7 +208,7 @@ article li {
   text-align: center;
 }
 
-form{
+form, table{
   text-align: center;
 }
 fieldset {
@@ -273,21 +273,78 @@ button:focus, button:hover {
   background: #E3A463;
 }
 
-table *{
-  border: thin solid black;
-  background-color: blanchedalmond;
-}
 
 table {
-  border-collapse: collapse;
+  width: 400px;
+  border: 10px solid #966D41;
+  padding:40px;
+  text-align: left;
+  background: #BAB6B6;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 8%;
+  margin-bottom: 16%;
+  
+  border-spacing: 0.5rem;
+  
+  
+}
+
+th, td {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  
 }
 
 th{
-font-family: Georgia, 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14pt;
+  text-align: left;
+  color:#2E2D2D;
+  
 }
 
-td {
-  font-family: Arial, Helvetica, sans-serif;
+thead th, thead td {
+  padding-top: 4%;
+  font-size: 16pt;
+  color:#2E2D2D;
+  background-color: #FAFAFA;
+}
+
+tfoot th {
+  text-align: left;
+  color:#2E2D2D;
+  background-color: #FAFAFA;
+  padding-left: 1%;
+}
+
+
+tbody th {
+  color:#2E2D2D;
+  padding-left: 1%;
+}
+
+td:last-child{
+  color:#2E2D2D;
+}
+
+td{
+  color: #573F26;
+  font-size: 14pt;
+  padding: 2%;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #FAFAFA;
+}
+
+td:hover, td:hover {
+  background-color: #E3A463;
+}
+
+th:hover, th:hover {
+  background-color: #E3A463;
 }
 
 
