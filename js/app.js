@@ -113,7 +113,7 @@ function renderFooter(){
   makeElement('th', tfRowElem , grandTotal);
 }
 
-// function will use the snapshot or state of the event as a parameter e and create a new Restaurant with the specifications from the form and render it to the table. 
+// function uses a snapshot or state of the event as parameter e and creates a new Restaurant with the specifications from the form and renders it to the table.
 function handleSubmit (e){
   //used this on form to cancel out data going into URL
   e.preventDefault();

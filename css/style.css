@@ -324,14 +324,14 @@ tfoot th {
   text-align: left;
   padding-left: 1%;
   padding-top: 2%;
-  background-color: #2E2D2D;
+  background: #FAFAFA;
   border-radius: 8px;
-  color:#FAFAFA;
 }
 
 tfoot th:first-child {
   color:#FAFAFA;
   font-weight: 700;
+  background-color: #2E2D2D;
 }
 
 tbody th {
@@ -355,6 +355,10 @@ td:hover, td:hover {
 }
 
 th:hover, th:hover {
+  background-color: #E3A463;
+}
+
+tfoot th:hover, tfoot th:hover {
   background-color: #E3A463;
 }
 
