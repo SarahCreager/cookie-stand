@@ -186,16 +186,31 @@ article li {
 
 /* ---------------------sales.html Main--------------------*/
 
+#sectionOne, #sectionTwo {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+
+#sectionOne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
 #sectionOne h2{
   font-family: 'Bebas Neue', cursive;
-  font-size: 350%;
+  font-size: 450%;
   padding-bottom: 8%;
-  padding-top: 10%;
+  padding-top: 8%;
   letter-spacing: 2px;
   color:#D69B5D;
   text-align: center;
 }
 
+form{
+  text-align: center;
+}
 fieldset {
   width: 360px;
   border: 10px solid #777576;
@@ -238,6 +253,24 @@ label {
   color:#2E2D2D;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15pt;
+}
+
+button {
+  background-color: #2E2D2D;
+  border: 6px solid #966D41;
+  border-radius: 8px;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 18pt;
+  color: #FAFAFA;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-shadow: 0px 1px 1px @966D41;
+}
+
+button:focus, button:hover {
+  background: #E3A463;
 }
 
 table *{
