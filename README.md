@@ -1,8 +1,6 @@
-# LAB - 06
+# Cookie Stand Project
 
-## Cookie Stand
-
-I created webpage that shows the locations of Restaraunts, listing the hour and amount of cookies sold. I constructed this using objects, loops, arrays, and functions.
+I created webpage that showcases Pat's Salmon Cookies. It contains a homepage styled with CSS, a sales page with a table that randomizes the number of cookies sold each hour for each store location with daily and hourly totals, and a form where you can input new restaurant locations into the table. 
 
 ### Author: Sarah Creager
 
@@ -10,9 +8,6 @@ I created webpage that shows the locations of Restaraunts, listing the hour and 
 * [.gitignore code](https://www.gitignore.io/api/node,linux,macos,windows,visualstudiocode)
 * [Eric Meyer's rest.css file](https://meyerweb.com/eric/tools/css/reset/)
 * [eslintrc.json code](https://github.com/codefellows/seattle-code-201d77/blob/main/configs/eslintrc.json)
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 ### Reflections and Comments
-* This has been great practices integrating all the  complex topics we've learned in class so far. 
+* This project was a struggle at first, but now looking back on it as a whole, I cannot belive how far it's come. 

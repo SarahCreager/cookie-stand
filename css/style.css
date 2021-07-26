@@ -69,6 +69,15 @@ nav a:hover {
   width: 960px;
   height: 450px;
   margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#sectOne h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 200%;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  color: #B6B3B5;
   margin-bottom: 100px;
 }
 
@@ -157,7 +166,7 @@ article li {
 
 #sectFour h2,#sectFour h3 {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -191,7 +200,6 @@ article li {
   margin-right: 150px;
 }
 
-
 #sectionOne, #sectionTwo {
   display: flex;
   flex-direction: column;
@@ -208,6 +216,7 @@ article li {
   text-align: center;
 }
 
+/* begin form*/
 form, table{
   text-align: center;
 }
@@ -266,33 +275,30 @@ button {
   color: #FAFAFA;
   margin-bottom: 20px;
   margin-top: 20px;
-  text-shadow: 0px 1px 1px @966D41;
 }
 
 button:focus, button:hover {
   background: #E3A463;
 }
 
-
+/* begin table*/
 table {
-  width: 400px;
+  width: 200px;
   border: 10px solid #966D41;
-  padding:40px;
+  padding:20px;
   text-align: left;
   background: #BAB6B6;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 8%;
   margin-bottom: 16%;
-  
   border-spacing: 0.5rem;
-  
-  
+  border-collapse:separate;
+  border-radius:8px;
 }
 
 th, td {
   border: 1px solid #999;
   padding: 0.5rem;
-  
 }
 
 th{
@@ -300,42 +306,47 @@ th{
   letter-spacing: 0.1em;
   font-size: 14pt;
   text-align: left;
-  color:#2E2D2D;
-  
+  background-color: #2E2D2D;
+  border-radius: 8px;
 }
 
 thead th, thead td {
-  padding-top: 4%;
+  padding-top: 2%;
   font-size: 16pt;
-  color:#2E2D2D;
-  background-color: #FAFAFA;
+  color:#FAFAFA;
+  font-weight: 700;
+  background-color: #2E2D2D;
+  border-radius: 8px;
 }
+
 
 tfoot th {
   text-align: left;
-  color:#2E2D2D;
-  background-color: #FAFAFA;
   padding-left: 1%;
+  padding-top: 2%;
+  background-color: #2E2D2D;
+  border-radius: 8px;
+  color:#FAFAFA;
 }
 
+tfoot th:first-child {
+  color:#FAFAFA;
+  font-weight: 700;
+}
 
 tbody th {
-  color:#2E2D2D;
-  padding-left: 1%;
-}
-
-td:last-child{
-  color:#2E2D2D;
+  color: #FAFAFA;
+  font-weight: 700;
 }
 
 td{
-  color: #573F26;
+  color: #514F50;
   font-size: 14pt;
-  padding: 2%;
   text-align: left;
+  border-radius: 8px;
 }
 
-tr:nth-child(even) {
+tr {
   background-color: #FAFAFA;
 }
 

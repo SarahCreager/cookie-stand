@@ -65,7 +65,7 @@ Restaurants.prototype.renderRestaurant = function(tbodyElem){
 
 //----------------------------------Global Functions--------------------------//
 
-//makes elements and adds them to the DOM. Used in functions below. Sometimes has an underscore. Helper function _makeElement. Helps make other functions easier. 
+//makes elements and adds them to the DOM. Used in functions below.
 function makeElement(tagName, parent, textContent){
   let element = document.createElement(tagName);
   if (textContent) {
@@ -105,7 +105,6 @@ function renderFooter(){
   for(let i=0; i <hoursArray.length; i++){
     let hourlyTotal = 0;
     for(let index=0; index<Restaurants.allRestaurants.length; index++){
-      //Restaurants.allRestaurants[index].salesPerHour[i]; is going when my column is at 6 am I'm looking at my restaurant row Seattle and grabbing that value. 
       hourlyTotal += Restaurants.allRestaurants[index].salesPerHour[i];
     }
     makeElement('th', tfRowElem, hourlyTotal);
@@ -116,7 +115,7 @@ function renderFooter(){
 
 // function will use the snapshot or state of the event as a parameter e and create a new Restaurant with the specifications from the form and render it to the table. 
 function handleSubmit (e){
-  // only use this on forms to cancel out data going into URL
+  //used this on form to cancel out data going into URL
   e.preventDefault();
   console.log(e);
   let location = e.target.city.value;
