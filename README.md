@@ -1,6 +1,6 @@
 # Cookie Stand Project
 
-I created webpage that showcases Pat's Salmon Cookies. It contains a homepage styled with CSS, a sales page with a table that randomizes the number of cookies sold each hour for each store location with daily and hourly totals, and a form where you can input new restaurant locations into the table. 
+This webpage was a lab assignment for my Code201 course at Code Fellows. I developed a webpage that showcases Pat's Salmon Cookies. It includes a sales page with a table that randomizes the number of cookies sold each hour for each store location with daily and hourly totals. This application also includes a form which allows the user to input new restaurant information and subsequently renders the new restaurant data onto the webpage and the table. 
 
 ### Author: Sarah Creager
 
@@ -9,5 +9,3 @@ I created webpage that showcases Pat's Salmon Cookies. It contains a homepage st
 * [Eric Meyer's rest.css file](https://meyerweb.com/eric/tools/css/reset/)
 * [eslintrc.json code](https://github.com/codefellows/seattle-code-201d77/blob/main/configs/eslintrc.json)
 
-### Reflections and Comments
-* This project was a struggle at first, but now looking back on it as a whole, I cannot belive how far it's come. 
